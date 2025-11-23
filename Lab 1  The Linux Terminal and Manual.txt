@@ -1,0 +1,141 @@
+                                        Lab 1 : The Linux Terminal and Manual
+
+---
+1. How to display the current date and time?
+*
+[ec2-user@ip-172-31-47-52 ~]$ date
+Sun Nov 23 15:40:08 UTC 2025
+*
+---
+2. Display the current day of the year using the date command.
+*
+[ec2-user@ip-172-31-47-52 ~]$ date +%j
+327
+*
+---
+3. Display the current time using the 24:00 hour format.
+*
+[ec2-user@ip-172-31-47-52 ~]$ date +%R
+15:42
+*
+---
+4. Display the file cat /etc/passwd
+*
+[ec2-user@ip-172-31-47-52 ~]$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+systemd-oom:x:999:999:systemd Userspace OOM Killer:/:/usr/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/usr/share/empty.sshd:/sbin/nologin
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+libstoragemgmt:x:997:997:daemon account for libstoragemgmt:/:/usr/sbin/nologin
+systemd-coredump:x:996:996:systemd Core Dumper:/:/usr/sbin/nologin
+systemd-timesync:x:995:995:systemd Time Synchronization:/:/usr/sbin/nologin
+chrony:x:994:994:chrony system user:/var/lib/chrony:/sbin/nologin
+ec2-instance-connect:x:993:993::/home/ec2-instance-connect:/sbin/nologin
+stapunpriv:x:159:159:systemtap unprivileged user:/var/lib/stapunpriv:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
+*
+---
+5. Display the last 10 lines of the /etc/group file.
+*
+[ec2-user@ip-172-31-47-52 ~]$ tail /etc/group
+chrony:x:994:
+ec2-instance-connect:x:993:
+stapusr:x:156:
+stapsys:x:157:
+stapdev:x:158:
+stapunpriv:x:159:stapunpriv
+rpcuser:x:29:
+tcpdump:x:72:
+screen:x:84:
+ec2-user:x:1000:
+*
+---
+6. Repeat the previous command with the help of history command.
+*
+[ec2-user@ip-172-31-47-52 ~]$ history
+    1  echo "Hello mahmoud"
+    2  sudo su
+    3  su
+    4  setterm -fore green -back white
+    5  clear
+    6  setterm -fore green -back default
+    7  calear
+    8  clear
+    9  setterm -fore green -back default
+   10  clear
+   11  setterm bold
+   12  setterm -bold on
+   13  sudo su -
+   14  clear
+   15  date
+   16  date +%j
+   17  date +%R
+   18  cat /etc/passwd
+   19  tail /etc/group
+   20  history
+*
+---
+7. Display the first 4 lines of the file /etc/group
+*
+[ec2-user@ip-172-31-47-52 ~]$ head -4 /etc/group
+root:x:0:
+bin:x:1:
+daemon:x:2:
+sys:x:3:
+*
+---
+8. Use the Linux manual to check the content of the man command. What is the option to use to find the location of the manual page of the passwd command?
+*
+[ec2-user@ip-172-31-47-52 ~]$ man -w passwd
+/usr/share/man/man1/passwd.1.gz
+*
+---
+9. Check the cat command using the man pages and search for the option to use to number the output file of /etc/passwd.
+*
+[ec2-user@ip-172-31-47-52 ~]$ cat -n /etc/passwd
+     1  root:x:0:0:root:/root:/bin/bash
+     2  bin:x:1:1:bin:/bin:/sbin/nologin
+     3  daemon:x:2:2:daemon:/sbin:/sbin/nologin
+     4  adm:x:3:4:adm:/var/adm:/sbin/nologin
+     5  lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+     6  sync:x:5:0:sync:/sbin:/bin/sync
+     7  shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+     8  halt:x:7:0:halt:/sbin:/sbin/halt
+     9  mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+    10  operator:x:11:0:operator:/root:/sbin/nologin
+    11  games:x:12:100:games:/usr/games:/sbin/nologin
+    12  ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+    13  nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+    14  dbus:x:81:81:System message bus:/:/sbin/nologin
+    15  systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+    16  systemd-oom:x:999:999:systemd Userspace OOM Killer:/:/usr/sbin/nologin
+    17  systemd-resolve:x:193:193:systemd Resolver:/:/usr/sbin/nologin
+    18  sshd:x:74:74:Privilege-separated SSH:/usr/share/empty.sshd:/sbin/nologin
+    19  rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+    20  libstoragemgmt:x:997:997:daemon account for libstoragemgmt:/:/usr/sbin/nologin
+    21  systemd-coredump:x:996:996:systemd Core Dumper:/:/usr/sbin/nologin
+    22  systemd-timesync:x:995:995:systemd Time Synchronization:/:/usr/sbin/nologin
+    23  chrony:x:994:994:chrony system user:/var/lib/chrony:/sbin/nologin
+    24  ec2-instance-connect:x:993:993::/home/ec2-instance-connect:/sbin/nologin
+    25  stapunpriv:x:159:159:systemtap unprivileged user:/var/lib/stapunpriv:/sbin/nologin
+    26  rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+    27  tcpdump:x:72:72::/:/sbin/nologin
+    28  ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
+*
