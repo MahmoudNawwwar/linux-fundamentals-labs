@@ -8,6 +8,7 @@ as part of my Linux/DevOps training.
 ## Labs
 
 - Lab 1: The Linux Terminal and Manual
+- Lab 2: paths, files and directories
 
 ## Environment
 
