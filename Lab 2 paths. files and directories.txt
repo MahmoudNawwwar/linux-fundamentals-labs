@@ -1,0 +1,149 @@
+1- Navigate to your home directory and then go to the directory for your user.
+*
+[root@ip-172-31-47-52 /]# pwd
+/
+[root@ip-172-31-47-52 /]# cd /home/ec2-user
+*
+---
+2- create 3 directories project1, project2, and project 3.
+*
+[root@ip-172-31-47-52 ec2-user]# mkdir project1 project2 project3
+[root@ip-172-31-47-52 ec2-user]# ls
+project1  project2  project3
+*
+---
+3- Create another 3 directories using the brace extension for project 4, project 5, and project 6.
+*
+[root@ip-172-31-47-52 ec2-user]# mkdir project{4..6}
+[root@ip-172-31-47-52 ec2-user]# ls -la
+total 16
+drwx------. 9 ec2-user ec2-user 191 Nov 24 13:47 .
+drwxr-xr-x. 3 root     root      22 Nov 22 20:05 ..
+-rw-------. 1 ec2-user ec2-user 336 Nov 23 16:56 .bash_history
+-rw-r--r--. 1 ec2-user ec2-user  18 Jan 28  2023 .bash_logout
+-rw-r--r--. 1 ec2-user ec2-user 141 Jan 28  2023 .bash_profile
+-rw-r--r--. 1 ec2-user ec2-user 492 Jan 28  2023 .bashrc
+drwx------. 2 ec2-user ec2-user  29 Nov 22 20:05 .ssh
+drwxr-xr-x. 2 root     root       6 Nov 24 13:46 project1
+drwxr-xr-x. 2 root     root       6 Nov 24 13:46 project2
+drwxr-xr-x. 2 root     root       6 Nov 24 13:46 project3
+drwxr-xr-x. 2 root     root       6 Nov 24 13:47 project4
+drwxr-xr-x. 2 root     root       6 Nov 24 13:47 project5
+drwxr-xr-x. 2 root     root       6 Nov 24 13:47 project6
+*
+---
+4- Create files name fileXY where X takes value from 1 to 6 and Y takes value from 1 to 2.
+*
+[root@ip-172-31-47-52 ec2-user]# touch file{1..6}{1..2}
+[root@ip-172-31-47-52 ec2-user]# ls
+file11  file12  file21  file22  file31  file32  file41  file42  file51  file52  file61  file62  project1  project2  project3  project4  project5  project6
+*
+---
+5- Move file11 and file12 to Project1
+file21 and file22 to project2
+file 31 and file 32 to project 3
+and so on till the current directory does not have any files.
+*
+[root@ip-172-31-47-52 ec2-user]# mv file11 file12 project1; mv file21 file22 project2; mv file31 file32 project3
+[root@ip-172-31-47-52 ec2-user]# mv file4* project4; mv file5* project5; mv file6* project6;
+[root@ip-172-31-47-52 ec2-user]# ls
+project1  project2  project3  project4  project5  project6
+[root@ip-172-31-47-52 ec2-user]# ls project{1..6}
+project1:
+file11  file12
+
+project2:
+file21  file22
+
+project3:
+file31  file32
+
+project4:
+file41  file42
+
+project5:
+file51  file52
+
+project6:
+file61  file62
+*
+---
+6- Go to Project3 and copy all files inside it to project 6 in one command.
+*
+[root@ip-172-31-47-52 ec2-user]# cd project3
+[root@ip-172-31-47-52 project3]# cp * /home/ec2-user/project6
+[root@ip-172-31-47-52 project3]# ls
+file31  file32
+[root@ip-172-31-47-52 project3]# ls  /home/ec2-user/project6
+file31  file32  file61  file62
+*
+---
+7- Go to directory Project1 and create 2 subdirectories myplan/importantfiles in one command.
+*
+[root@ip-172-31-47-52 project3]# cd /home/ec2-user/project1
+[root@ip-172-31-47-52 project1]# mkdir -p myplan/importantfiles
+[root@ip-172-31-47-52 project1]# ls -R
+.:
+file11  file12  myplan
+
+./myplan:
+importantfiles
+
+./myplan/importantfiles:
+*
+---
+8- Create a hard link for file 51 under myplan/importantfiles
+*
+[root@ip-172-31-47-52 project1]# ln /home/ec2-user/project5/file51 /home/ec2-user/project1/myplan/importantfiles
+[root@ip-172-31-47-52 project1]# ls
+file11  file12  myplan
+[root@ip-172-31-47-52 project1]# ls -R
+.:
+file11  file12  myplan
+
+./myplan:
+importantfiles
+
+./myplan/importantfiles:
+file51
+*
+---
+9- Create a soft link for file 11 under myplan/importantfiles
+*
+[root@ip-172-31-47-52 project1]# ln -s /home/ec2-user/project1/file11 /home/ec2-user/project1/myplan/importantfiles
+[root@ip-172-31-47-52 project1]# ls -R
+.:
+file11  file12  myplan
+
+./myplan:
+importantfiles
+
+./myplan/importantfiles:
+file11  file51
+*
+---
+10- create a soft link to the directory project4 under /tmp
+*
+[root@ip-172-31-47-52 project1]# ln -s /home/ec2-user/project4 /tmp
+[root@ip-172-31-47-52 project1]# ls /tmp
+project4                                                                     systemd-private-b4f2e596f6b447d18afe51e42c0c4776-policy-routes@ens5.service-c5QuTH
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-chronyd.service-r8a0jZ      systemd-private-b4f2e596f6b447d18afe51e42c0c4776-systemd-logind.service-VsF7je
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-dbus-broker.service-4vGlg8  systemd-private-b4f2e596f6b447d18afe51e42c0c4776-systemd-resolved.service-3kJDeZ
+*
+---
+11- Remove the Project1 directory without being asked for confirmation by the prompt.
+*
+[root@ip-172-31-47-52 project1]# cd ..
+[root@ip-172-31-47-52 ec2-user]# rm -rf project1
+[root@ip-172-31-47-52 ec2-user]# ls
+project2  project3  project4  project5  project6
+*
+---
+12- Rename file22 to the last file.
+*
+[root@ip-172-31-47-52 ec2-user]# cd project2
+[root@ip-172-31-47-52 project2]# mv file22 thelastfile
+[root@ip-172-31-47-52 project2]# ls
+file21  thelastfile
+*
+---
