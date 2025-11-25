@@ -1,4 +1,3 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0e8f67b0-db75-4ceb-8cfb-9be6c4e2cbcb" /># linux-fundamentals-labs
 Linux fundamentals labs solved on Amazon Linux
 # Linux Fundamentals Labs
 
