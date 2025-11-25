@@ -9,7 +9,7 @@ as part of my Linux/DevOps training.
 
 - Lab 1: The Linux Terminal and Manual
 - Lab 2: paths, files and directories
-
+- Lab 3: Working with Text Files
 ## Environment
 
 - OS: Amazon Linux (EC2)
