@@ -1,0 +1,73 @@
+1- list the directory under /tmp and save the output to file lab5_file
+*
+[ec2-user@ip-172-31-47-52 ~]$ ls /tmp > lab5_file
+[ec2-user@ip-172-31-47-52 ~]$ cat lab5_file
+project4
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-chronyd.service-r8a0jZ
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-dbus-broker.service-4vGlg8
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-policy-routes@ens5.service-c5QuTH
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-systemd-logind.service-VsF7je
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-systemd-resolved.service-3kJDeZ
+*
+2- print equal signs " ======================================" and append it to lab5_file
+*
+[ec2-user@ip-172-31-47-52 ~]$ echo "============================" >> lab5_file
+[ec2-user@ip-172-31-47-52 ~]$ cat lab5_file
+project4
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-chronyd.service-r8a0jZ
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-dbus-broker.service-4vGlg8
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-policy-routes@ens5.service-c5QuTH
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-systemd-logind.service-VsF7je
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-systemd-resolved.service-3kJDeZ
+============================
+3- Run find /etc -name passwd and append the output to lab5_file
+*
+[ec2-user@ip-172-31-47-52 ~]$ find /etc -name passwd &>> lab5_file
+[ec2-user@ip-172-31-47-52 ~]$ cat lab5_file
+project4
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-chronyd.service-r8a0jZ
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-dbus-broker.service-4vGlg8
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-policy-routes@ens5.service-c5QuTH
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-systemd-logind.service-VsF7je
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-systemd-resolved.service-3kJDeZ
+============================
+/etc/passwd
+/etc/pam.d/passwd
+/etc/passwd
+find: ‘/etc/grub.d’: Permission denied
+/etc/pam.d/passwd
+find: ‘/etc/ssh/sshd_config.d’: Permission denied
+find: ‘/etc/sssd’: Permission denied
+find: ‘/etc/sudoers.d’: Permission denied
+find: ‘/etc/audit’: Permission denied
+*
+4-view the file lab5_file to verify the output
+*
+[ec2-user@ip-172-31-47-52 ~]$ find /etc -name passwd &>> lab5_file
+[ec2-user@ip-172-31-47-52 ~]$ cat lab5_file
+project4
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-chronyd.service-r8a0jZ
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-dbus-broker.service-4vGlg8
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-policy-routes@ens5.service-c5QuTH
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-systemd-logind.service-VsF7je
+systemd-private-b4f2e596f6b447d18afe51e42c0c4776-systemd-resolved.service-3kJDeZ
+============================
+/etc/passwd
+/etc/pam.d/passwd
+/etc/passwd
+find: ‘/etc/grub.d’: Permission denied
+/etc/pam.d/passwd
+find: ‘/etc/ssh/sshd_config.d’: Permission denied
+find: ‘/etc/sssd’: Permission denied
+find: ‘/etc/sudoers.d’: Permission denied
+find: ‘/etc/audit’: Permission denied
+*
+5- search for the keyword failed in /var/log/messaged and print the only 5 lines of search result.
+*
+[root@localhost ec2-user]# grep -i failed /var/log/messages | head -n 5
+Aug 1 13:44:13 localhost journal[2265]: clutter_actor_get_preferred_height: assertion 'CLUTTER_IS_ACTOR (self)' failed
+Aug 1 13:44:13 localhost journal[2265]: clutter_actor_get_preferred_width: assertion 'CLUTTER_IS_ACTOR (self)' failed
+Aug 1 13:44:18 localhost journal[2265]: clutter_actor_get_preferred_height: assertion 'CLUTTER_IS_ACTOR (self)' failed
+Aug 4 20:19:53 localhost kernel: [drm:vmw_host_log [vmwgfx]] *ERROR* Failed to send host log message.
+Aug 4 20:19:53 localhost kernel: [drm:vmw_host_log [vmwgfx]] *ERROR* Failed to send host log message.
+/
