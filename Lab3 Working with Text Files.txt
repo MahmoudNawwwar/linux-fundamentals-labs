@@ -1,0 +1,45 @@
+1- list all files including hidden files inside the tmp directory with their permissions and redirect the output (put) in a new file called vimtest under home directory. ( hint: use the > )
+*
+[root@ip-172-31-47-52 ec2-user]# ls -al /tmp> /home/vimtest
+*
+2- Remove the first 4 lines using vim visual mode.
+*
+vim vimtest
+Shift+V
+select 4 lines
+press x
+*
+3- Remove the last line using the vim command mode.
+*
+Shift+g
+dd
+*
+4-insert at the end of the test the phrase " Practicing Vim and Grep"
+*
+shift+g
+i
+to to end of the line + enter
+Practiving Vim and Grep
+escape
+*
+5- Select the second column and copy it and paste it under the 3rd line.
+*
+Ctrl + v
+down arrow till last line
+press y
+go to the end of the text
+press p
+*
+6-Save the modifications and exit.
+*
+escape
+:wq
+*
+7- search the pattern that contains practicing in the file and get 3 lines after it.
+*
+[root@localhost ec2-user]# grep -iA 3 practicing /home/vimtest
+Practicing Vim and Grep
+1
+1
+1
+*
