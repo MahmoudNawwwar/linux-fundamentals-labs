@@ -1,0 +1,72 @@
+1- List all socket units installed on dolfin1 server.
+-
+[root@localhost test]# systemctl list-unit-files --type=socket
+[root@localhost test]# systemctl list-units --type=socket
+-
+
+2- Check if the cron.service is active and enabled.
+-
+[root@localhost test]# systemctl is-active cron.service
+[root@localhost test]# systemctl is-enabled cron.service
+-
+
+3- Start the psacct service both at your session and at boot time.
+-
+[root@localhost test]# systemctl start psacct.service
+[root@localhost test]# systemctl enable psacct.service
+-
+
+4- Configure psacct to be started at boot time.
+-
+[root@localhost test]# systemctl enable psacct.service
+-
+
+5- Configure the httpd service not to be started at boot time. (Please download it if not found)
+-
+[root@localhost test]# dnf install httpd -y
+[root@localhost test]# systemctl disable httpd.service
+-
+6- List all active services.
+-
+[root@localhost test]# systemctl list-units --type=service
+-
+
+7- Check the status of the sshd service.
+-
+[root@localhost test]# systemctl status sshd.service
+-
+
+8- Stop the sshd service.
+-
+[root@localhost test]# systemctl stop sshd.service
+-
+
+9- Start the sshd service again.
+-
+[root@localhost test]# systemctl start sshd.service
+-
+
+10- Restart the sshd service.
+-
+[root@localhost test]# systemctl restart sshd.service
+-
+
+11- Enable sshd service to start on boot.
+-
+[root@localhost test]# systemctl enable sshd.service
+-
+
+12- Disable sshd service from starting on boot.
+-
+[root@localhost test]# systemctl disable sshd.service
+-
+
+13- Check if sshd is enabled.
+-
+[root@localhost test]# systemctl is-enabled sshd.service
+-
+
+14- Check if sshd is currently running.
+-
+[root@localhost test]# systemctl is-active sshd.service
+-
