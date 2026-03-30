@@ -10,6 +10,7 @@ as part of my Linux/DevOps training.
 - Lab 2: paths, files and directories
 - Lab 3: Working with Text Files
 - Lab 4: Working with Text Files.txt
+- Lab 5 Users, Groups and Permissions.txt
 ## Environment
 
 - OS: Amazon Linux (EC2)
