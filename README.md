@@ -11,6 +11,7 @@ as part of my Linux/DevOps training.
 - Lab 3: Working with Text Files
 - Lab 4: Working with Text Files.txt
 - Lab 5 Users, Groups and Permissions.txt
+- Lab 6 Monitoring and Managing Linux Processes
 ## Environment
 
 - OS: Amazon Linux (EC2)
