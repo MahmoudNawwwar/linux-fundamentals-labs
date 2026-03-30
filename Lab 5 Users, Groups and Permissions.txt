@@ -1,0 +1,111 @@
+1- From root account, create a new user called Alia with user id 2080
+-
+[root@localhost test]# useradd -u 2080 aliaa
+-
+2- Grant access to user Alia so that it can run any command without a password.
+-
+visudo
+aliaa    ALL=(ALL)  NOPASSWD: ALL
+
+3-Set password for user Alia and set the following information regarding her password
+The minimum days is 14 days
+The maximum days is 90 days
+the rest of the configuration doesn't matter.
+
+-
+[root@localhost test]# passwd aliaa
+Changing password for user aliaa.
+New password: 
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@localhost test]#  chage -m 14 -M 90 aliaa
+[root@localhost test]# chage -l aliaa
+Last password change					: Mar 30, 2026
+Password expires					: Jun 28, 2026
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 14
+Maximum number of days between password change		: 90
+Number of days of warning before password expires	: 7
+
+
+
+
+4-Force user Alia to change her password at first login
+-
+[root@localhost test]# chage -d 0 aliaa
+[root@localhost test]# chage -l aliaa
+Last password change					: password must be changed
+Password expires					: password must be changed
+Password inactive					: password must be changed
+Account expires						: never
+Minimum number of days between password change		: 14
+Maximum number of days between password change		: 90
+Number of days of warning before password expires	: 7
+-
+5-Switch to user Alia and create user Arya. Also create user Jon with comment "winter is coming", and user Tyrion.
+-
+[root@localhost test]# su aliaa
+[aliaa@localhost test]$ useradd Arya
+useradd: Permission denied.
+useradd: cannot lock /etc/passwd; try again later.
+[aliaa@localhost test]$ sudo useradd Arya
+[aliaa@localhost test]$ sudo useradd -c "winter is coming" Jon
+[aliaa@localhost test]$ sudo useradd Tyrion
+-
+6-With user Alia, create group starks and lannisters.
+-
+[aliaa@localhost test]$ sudo groupadd starks
+[aliaa@localhost test]$ sudo groupadd lannisters
+-
+
+7-With user Alia, create directory gameofthrones
+-
+[aliaa@localhost test]$ mkdir gameofthrones
+-
+8- Under gameofthrones , create 2 subdirectories starks and lannisters
+-
+[aliaa@localhost test]$ mkdir gameofthrones
+[aliaa@localhost test]$ cd gameofthrones
+[aliaa@localhost gameofthrones]$ mkdir starks lannisters
+[aliaa@localhost gameofthrones]$ ls
+lannisters  starks
+-
+9-Change ownership of directory stark so the owner is Arya and group is starks, while the user owner of directory lannisters is Tyrion and group owner is lannisters.
+-
+[aliaa@localhost gameofthrones]$ sudo chown Arya:starks starks
+[aliaa@localhost gameofthrones]$ sudo chown Tyrion:lannisters lannisters
+-
+10-Ensure any subdirectory to inherit the group ownership from the parent directory for /starks
+-
+[aliaa@localhost gameofthrones]$ sudo chmod g+s starks
+[aliaa@localhost gameofthrones]$ ll
+total 0
+drwxrwsr-x. 2 Tyrion lannisters 6 Mar 30 10:22 lannisters
+drwxrwsr-x. 2 Arya   starks     6 Mar 30 10:22 starks
+-
+11- Create a new file under lannisters called goldscript, make it executable with setuserid and write the following
+#!/bin/bash
+echo " Lannisters send their regards"
+-
+[aliaa@localhost gameofthrones]$ echo '#!/bin/bash' >> lannisters/goldscript
+[aliaa@localhost gameofthrones]$ echo 'echo "Lannisters send their regards"' >> lannisters/goldscript
+[aliaa@localhost gameofthrones]$ sudo chmod u+x lannisters/goldscript
+[aliaa@localhost gameofthrones]$ sudo chmod u+s lannisters/goldscript
+[aliaa@localhost gameofthrones]$ ll lannisters/goldscript
+-rwsr-xr--. 1 root lannisters 0 Mar 30 10:30 lannisters/goldscript
+
+-
+12- With user Alia, run goldscript without using sudo. (Hint: to run a script ./goldscript)
+-
+[aliaa@localhost gameofthrones]$ ./lannisters/goldscript
+ Lannisters send their regards
+-
+13- Switch to root and go to the user configuration file and remove all users in questions 1 and 5.
+and remove the users Alia , Arya, Jon and tyrion using dd
+
+-
+[aliaa@localhost gameofthrones]$ su
+Password: 
+[root@localhost gameofthrones]# dd if=/dev/null of=/etc/passwd
+-
