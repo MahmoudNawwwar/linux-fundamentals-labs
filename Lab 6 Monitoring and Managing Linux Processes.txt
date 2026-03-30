@@ -1,0 +1,91 @@
+1- Display all running processes in the system.
+-
+[root@localhost test]# ps aux
+[root@localhost test]# ps -ef
+-
+
+2- Show processes in a hierarchical (tree) format.
+-
+[root@localhost test]# pstree
+[root@localhost test]# ps -ef --forest
+[root@localhost test]# ps -ejH
+-
+
+3- Find all processes related to "sshd".
+-
+[root@localhost test]# ps aux | grep sshd
+-
+
+4- Start a background process that runs for 5 minutes.
+-
+[root@localhost test]# sleep 300 &
+[root@localhost test]# sleep $((5*60)) &
+-
+
+5- Display all background jobs.
+-
+[root@localhost test]# jobs
+-
+
+6- Bring the first background job to the foreground.
+-
+[root@localhost test]# jobs
+[root@localhost test]# fg %1
+-
+
+7- Stop a running foreground process temporarily.
+-
+Ctrl + Z
+-
+
+8- Resume a stopped process in the background.
+-
+[root@localhost test]# bg %1
+-
+
+9- Kill a process using its PID.
+-
+[root@localhost test]# kill PID
+[root@localhost test]# kill -15 PID
+-
+
+10- Force kill a process that refuses to terminate.
+-
+[root@localhost test]# kill -9 PID
+-
+
+11- Display real-time system processes.
+-
+[root@localhost test]# top
+-
+
+12- Create a process using sleep and then terminate it.
+-
+[root@localhost test]# sleep 1000 &
+[root@localhost test]# ps aux | grep sleep
+[root@localhost test]# kill 5555
+
+[root@localhost test]# sleep 1000 &
+[root@localhost test]# pgrep sleep
+[root@localhost test]# kill PID
+-
+
+13- Find the PID of a running process using its name.
+-
+[root@localhost test]# ps aux | grep sleep
+-
+
+14- Display detailed information about a specific process.
+-
+[root@localhost test]# ps -fp PID
+-
+
+15- Kill all processes with a specific name.
+-
+[root@localhost test]# pkill processName
+-
+
+16- Show the top 5 processes consuming the most CPU.
+-
+[root@localhost test]# ps -eo pid,uid,%cpu --sort=-%cpu | head -n 5
+-
