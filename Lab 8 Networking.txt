@@ -1,0 +1,34 @@
+1- As a network administrator, you have 2 machines. kindly configure one of them with the following connection.
+Connection name: lab
+Interface name: ens0p8 (if not available, use the network adapter configured for the NAT Network or create a new one)
+IP address: 172.5.1.7/24
+Gateway address: 172.5.1.254
+DNS address 172.5.1.254
+-
+[root@localhost test]# nmcli connection add con-name lab ifname ens0p8 type ethernet ipv4.addresses 172.5.1.7/24 gw4 172.5.1.254 ipv4.dns 172.5.1.254 ipv4.method manual
+[root@localhost test]# nmcli connection up lab
+[root@localhost test]# nmcli connection show lab
+-
+
+2- Configure the lab connection to start automatically.
+-
+[root@localhost test]# nmcli connection modify lab connection.autoconnect yes
+[root@localhost test]# nmcli connection show lab
+-
+
+3- Modify the lab connection to include ip 192.168.1.18/24 as well.
+-
+[root@localhost test]# nmcli connection modify lab +ipv4.addresses 192.168.1.18/24
+[root@localhost test]# nmcli connection up lab
+-
+
+4- Configure hosts file to include the ip 192.168.1.3 (Reachable IP on the other machine) to be referenced as privatedolphin.
+-
+[root@localhost test]# vim /etc/hosts
+192.168.1.3   privatedolphin
+-
+
+5- Ping privatedolphin for testing.
+-
+[root@localhost test]# ping privatedolphin
+-
