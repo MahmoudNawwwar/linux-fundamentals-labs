@@ -13,6 +13,7 @@ as part of my Linux/DevOps training.
 - Lab 5 Users, Groups and Permissions.txt
 - Lab 6 Monitoring and Managing Linux Processes
 - Lab 7 Daemons and Services
+- Lab 8 Networking
 ## Environment
 
 - OS: Amazon Linux (EC2)
