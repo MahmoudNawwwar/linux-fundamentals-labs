@@ -1,0 +1,107 @@
+1- Disable root login on server dolfin2 and verify it. (Don't forget to enable it after this question)
+-
+[root@dolfin2 ~]# vim /etc/ssh/sshd_config
+PermitRootLogin no
+:wq!
+
+[root@dolfin2 ~]# systemctl reload sshd.service
+[root@dolfin1 ~]$ ssh root@dolfin2
+Permission denied (publickey,password).
+-
+
+2- Create RSA key-pair on server dolfin1 and save it as mydolfinRSAkey under .ssh directory with passphrase "dolfin".
+-
+[nawwar@dolfin1 ~]$ ssh-keygen -t rsa -f ~/.ssh/mydolfinRSAkey
+Enter passphrase: dolfin
+Enter same passphrase again: dolfin
+-
+
+3- Transfer the RSA public key to dolfin2.
+-
+[nawwar@dolfin1 ~]$ ssh-copy-id -i ~/.ssh/mydolfinRSAkey.pub root@dolfin2
+-
+
+4- Connect to dolfin2 server using the mydolfinRSAkey.
+-
+[nawwar@dolfin1 ~]$ ssh -i ~/.ssh/mydolfinRSAkey root@dolfin2
+-
+
+5- Check SSH service status.
+-
+[root@dolfin2 ~]# systemctl status sshd
+-
+
+6- From a client machine, connect to the server using SSH with username and password.
+-
+[nawwar@localhost ~]$ ssh root@192.168.151.5
+-
+
+7- Generate an SSH key pair on the client machine.
+-
+[nawwar@localhost ~]$ ssh-keygen
+-
+
+8- Verify that the .ssh directory and key files are created.
+-
+[nawwar@localhost ~]$ ls -al ~/.ssh
+-
+
+9- Copy the public key from the client to the server.
+-
+[nawwar@localhost ~]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.151.5
+-
+
+10- Connect again to the server using SSH and verify that no password is required.
+-
+[nawwar@localhost ~]$ ssh root@192.168.151.5
+-
+
+11- On the server, verify that the public key exists in the authorized_keys file.
+-
+[root@server ~]# vim ~/.ssh/authorized_keys
+-
+
+12- Disable password authentication on the server.
+-
+[root@server ~]# vim /etc/ssh/sshd_config
+PasswordAuthentication no
+:wq!
+-
+
+13- Restart the SSH service.
+-
+[root@server ~]# systemctl restart sshd.service
+-
+
+14- Try to connect again from the client and verify access using key authentication only.
+-
+[nawwar@localhost ~]$ ssh root@192.168.151.5
+-
+
+15- Change the default SSH port from 22 to 2222.
+-
+[root@server ~]# vim /etc/ssh/sshd_config
+Port 2222
+:wq!
+-
+
+16- Restart SSH service after changing the port.
+-
+[root@server ~]# systemctl restart sshd.service
+-
+
+17- Connect to the server using the new SSH port.
+-
+[nawwar@localhost ~]$ ssh -p 2222 root@192.168.151.5
+-
+
+18- Check which port SSH is listening on.
+-
+[root@server ~]# ss -tuln | grep 2222
+-
+
+
+
+
+
+
