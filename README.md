@@ -14,6 +14,7 @@ as part of my Linux/DevOps training.
 - Lab 6 Monitoring and Managing Linux Processes
 - Lab 7 Daemons and Services
 - Lab 8 Networking
+- Lab 9 Secure Shell (SSH).txt
 ## Environment
 
 - OS: Amazon Linux (EC2)
