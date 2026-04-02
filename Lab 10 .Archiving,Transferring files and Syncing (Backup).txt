@@ -1,0 +1,64 @@
+Backup and Restore Lab
+
+1- Archive the /etc directory into etc.backup.tar and create another compressed archive etc.backup.tar.xz under /tmp/Archivelab.
+-
+[root@localhost ~]# mkdir -p /tmp/Archivelab
+[root@localhost ~]# cd /tmp/Archivelab
+
+[root@localhost Archivelab]# tar -cf etc.backup.tar /etc
+tar: Removing leading `/' from member names
+
+[root@localhost Archivelab]# tar -cJf etc.backup.tar.xz /etc
+tar: Removing leading `/' from member names
+
+[root@localhost Archivelab]# ls
+etc.backup.tar  etc.backup.tar.xz
+-
+
+2- Compare between the sizes of each archive file.
+-
+[root@localhost Archivelab]# tar -czf etc.backup.tar.gz /etc
+tar: Removing leading `/' from member names
+
+[root@localhost Archivelab]# tar -cjf etc.backup.tar.bz2 /etc
+tar: Removing leading `/' from member names
+
+[root@localhost Archivelab]# ls -alh
+-rw-r--r--. 1 root root 25M etc.backup.tar
+-rw-r--r--. 1 root root 5.6M etc.backup.tar.gz
+-rw-r--r--. 1 root root 4.8M etc.backup.tar.bz2
+-rw-r--r--. 1 root root 4.1M etc.backup.tar.xz
+-
+
+3- Using secure copy, transfer etc.backup.tar to the remote machine (dolfin2) under /tmp/Archivelab.
+-
+[root@localhost Archivelab]# scp etc.backup.tar root@dolfin2:/tmp/Archivelab/
+-
+
+4- Using secure FTP, transfer etc.backup.tar.xz to the remote machine under /tmp/Archivelab.
+-
+[root@localhost Archivelab]# sftp root@dolfin2
+sftp> put etc.backup.tar.xz /tmp/Archivelab/
+sftp> exit
+-
+
+5- Delete all archived files in step 1.
+-
+[root@localhost Archivelab]# rm -f etc.backup.tar etc.backup.tar.xz
+-
+
+6- Sync /tmp/Archivelab in machine1 with /tmp/Archivelab in machine2 so that both directories are the same.
+-
+[root@localhost Archivelab]# rsync -av /tmp/Archivelab/ root@dolfin2:/tmp/Archivelab/
+-
+
+7- In machine 1, create another directory /tmp/etcbackup/ and extract etc.backup.tar.xz inside this directory.
+-
+[root@localhost ~]# mkdir -p /tmp/etcbackup
+[root@localhost ~]# tar -xJf /tmp/Archivelab/etc.backup.tar.xz -C /tmp/etcbackup
+-
+
+8- Locally, sync /tmp/etcbackup/ with /tmp/Archivelab so that they include the same content.
+-
+[root@localhost ~]# rsync -av /tmp/etcbackup/ /tmp/Archivelab/
+-
