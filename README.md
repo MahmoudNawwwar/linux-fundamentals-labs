@@ -1,4 +1,4 @@
-Linux fundamentals labs solved on Amazon Linux
+<img width="1157" height="648" alt="image" src="https://github.com/user-attachments/assets/c9b7fd5c-4e60-407a-8362-1b50a5ba561e" />Linux fundamentals labs solved on Amazon Linux
 # Linux Fundamentals Labs
 
 This repository contains my Linux fundamentals labs solved on Amazon Linux (AWS EC2)
@@ -15,6 +15,7 @@ as part of my Linux/DevOps training.
 - Lab 7 Daemons and Services
 - Lab 8 Networking
 - Lab 9 Secure Shell (SSH).txt
+- Lab 10 Archiving,Transferring files and Syncing (Backup)
 ## Environment
 
 - OS: Amazon Linux (EC2)
