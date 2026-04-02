@@ -1,4 +1,4 @@
-                                        Lab 1 : The Linux Terminal and Manual
+                                        Lab 01 : The Linux Terminal and Manual
 
 ---
 1. How to display the current date and time?
