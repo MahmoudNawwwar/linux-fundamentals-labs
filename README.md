@@ -16,6 +16,7 @@ as part of my Linux/DevOps training.
 - Lab 8 Networking
 - Lab 9 Secure Shell (SSH).txt
 - Lab 10 Archiving,Transferring files and Syncing (Backup)
+- Lab 11 Installing software packages.txt
 ## Environment
 
 - OS: Amazon Linux (EC2)
