@@ -1,0 +1,108 @@
+Installing and Updating Software Packages Lab
+
+Part 1: YUM & RPM
+
+1- Using YUM, collect detailed information (Name, Version, Description) for autofs.
+-
+[root@localhost ~]# dnf info autofs
+-
+
+2- Using RPM, check whether the autofs package is installed or not.
+-
+[root@localhost ~]# rpm -qi autofs
+-
+
+
+Part 2: DNF Package Management
+
+1- Display all enabled repositories on your system.
+-
+[root@localhost ~]# dnf repolist
+repo id        repo name
+BaseOS         Red Hat Enterprise Linux 9 - BaseOS
+AppStream      Red Hat Enterprise Linux 9 - AppStream
+-
+
+2- Search for a package called httpd.
+-
+[root@localhost ~]# dnf search httpd
+httpd.x86_64        : Apache HTTP Server
+httpd-tools.x86_64  : Tools for the Apache HTTP Server
+-
+
+3- Display detailed information about the httpd package.
+-
+[root@localhost ~]# dnf info httpd
+Name         : httpd
+Version      : 2.4.57
+Release      : 1.el9
+Architecture : x86_64
+Size         : 1.4 M
+Repo         : AppStream
+Summary      : Apache HTTP Server
+-
+
+4- Install the httpd package.
+-
+[root@localhost ~]# dnf install httpd -y
+-
+
+5- Verify that httpd is installed.
+-
+[root@localhost ~]# dnf list installed httpd
+-
+
+6- List all installed packages on the system.
+-
+[root@localhost ~]# dnf list installed
+-
+
+7- Remove the httpd package.
+-
+[root@localhost ~]# dnf remove httpd -y
+-
+
+8- Install the nginx package.
+-
+[root@localhost ~]# dnf install nginx -y
+-
+
+9- Start the nginx service.
+-
+[root@localhost ~]# systemctl start nginx
+-
+
+10- Enable nginx to start at boot.
+-
+[root@localhost ~]# systemctl enable nginx
+-
+
+11- Check if nginx is running.
+-
+[root@localhost ~]# systemctl status nginx
+-
+
+12- Check for available updates.
+-
+[root@localhost ~]# dnf check-update
+-
+
+13- Update all packages on the system.
+-
+[root@localhost ~]# dnf update -y
+-
+
+14- Update only the nginx package.
+-
+[root@localhost ~]# dnf update nginx -y
+-
+
+15- Display history of installed packages.
+-
+[root@localhost ~]# dnf history
+-
+
+16- Undo the last package installation.
+-
+[root@localhost ~]# dnf history undo last
+-
